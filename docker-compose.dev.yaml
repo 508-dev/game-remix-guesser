@@ -10,6 +10,11 @@ services:
   - .env
   depends_on:
     - psqldbgame
+  volumes:
+    - type: bind
+      source: ./app
+      target: /app
+      read_only: true
 
  psqldbgame:
   image: postgres
@@ -19,3 +24,6 @@ services:
   - 3306:5432
   env_file:
   - .env
+
+volumes:
+  app:
